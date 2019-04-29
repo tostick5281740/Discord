@@ -1,7 +1,75 @@
-var random_images_array_y_azucar = ["img1.gif", "img2.gif", ...];
-function getRandomImage(imgAr, path) {
-    path = path || 'images/'; // default path here
-    var num = Math.floor( Math.random() * imgAr.length );
-    var img = imgAr[ num ];
-    var imgStr = '<img src="' + path + img + '" alt = "">';
-    document.write(imgStr); document.close();
+<body style="overflow:hidden">
+<script >
+var winW = 0, winH = 0;
+if (document.body && document.body.offsetWidth) {
+ winW = document.body.offsetWidth;
+ winH = document.body.offsetHeight;
+}
+if (document.compatMode=='CSS1Compat' &&
+    document.documentElement &&
+    document.documentElement.offsetWidth ) {
+ winW = document.documentElement.offsetWidth;
+ winH = document.documentElement.offsetHeight;
+}
+if (window.innerWidth && window.innerHeight) {
+ winW = window.innerWidth;
+ winH = window.innerHeight;
+}
+
+
+
+total_h=0;
+total_w=0;
+maximo=200;
+minimo=50;
+
+var i=0;
+imagem=0;
+randomhmaior=0
+linhas=0;
+linha=0;
+randomhmaiortotal=0;
+iw=0;
+winW=winW-40;
+var width=new Array(); 
+randomnumberh=90;
+while (total_h<winH)
+{
+
+var randomnumberw=Math.round(Math.random() * (maximo - minimo) + minimo);
+imagem=0;
+imagem=imagem+Math.round(Math.random() * (300 - 0) + 0)
+if (imagem<10)
+imagem='0'+imagem;
+if ((total_h+randomnumberh)>winH){
+//randomnumberh=winH-total_h;
+}
+if ((total_w+randomnumberw)>winW){
+randomnumberw=winW-total_w;
+}
+
+
+if (linhas==0){
+
+width[iw]=randomnumberw;
+}else{
+randomnumberw=width[iw];
+}
+total_w=total_w+randomnumberw;
+i=i+1;
+
+//document.write('<img align=top src=http://www.google.ca/images?q=design&start=' + imagem + '&gbv=1 width='+randomnumberw+' height='+randomnumberh+'/>'); //HERE the source of ONLINE images but it doesn't work
+
+document.write('<img align=top src=img/0'+imagem+'.JPG width='+randomnumberw+' height='+randomnumberh+'/>'); //HERE the source of LOCAL images 
+iw=iw+1
+if (winW==total_w){
+total_w=0;
+linhas=linhas+1;
+iw=0
+document.write('<br>');
+}
+total_h=randomnumberh*(linhas+1);
+}
+
+</script>
+</body>
